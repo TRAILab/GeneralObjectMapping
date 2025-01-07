@@ -1,0 +1,11 @@
+omegaconf
+git+https://github.com/facebookresearch/pytorch3d.git@V0.7.8
+black
+isort
+opencv-python
+yaml
+PyYAML
+numpy==1.26.4
+open3d
+numpy-quaternion
+commentjson

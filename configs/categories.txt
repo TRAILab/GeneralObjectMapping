@@ -1,0 +1,17 @@
+bathtub
+bed
+bookshelf
+cabinet
+chair
+sofa
+table
+toytruck
+bench
+donut
+broccoli
+toytrain
+apple
+teddybear
+hydrant
+book
+toaster

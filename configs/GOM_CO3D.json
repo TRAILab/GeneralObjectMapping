@@ -1,0 +1,92 @@
+// JSON file with comments
+{
+    "debug": false,
+
+    "save_root": "./output/CO3D/",
+    "sequence_dir": "dataset/co3d",
+    "dataset_name": "co3d",
+
+    "icp_model_source": "shap_e_prior_meshes",
+
+    "random_seed": 1,
+
+    // Dataset settings
+    "dataset_category": "hydrant", 
+
+    "view_num": 10,
+
+    "dataset_frame_sample_method": "equal",  // center for single, equal for multi-view
+
+    // debug flag
+    "debug_use_gt_points": false,
+
+    // Unknown Variables
+    "flag_optimize_latent": true,
+
+    "flag_optimize_pose": true,
+
+    // gt_scannet_scaled
+    "method_init_pose": "icp_class", // 'random_basic', 'icp', 'shap-e', 'gt_scannet_icp': further introduce rotation
+
+    // "skip_optimization_after": 64,
+
+    // Geometric Constraints Settings
+    "geometric_constraints_state": true,  
+
+    //// 3D Loss
+    "geometric_constraints_3dloss_points_sample_each_iter": 5000,
+    //// 2D Rendering
+    "geometric_constraints_2dloss_render_ray_num": 1000,
+    //// Loss Weights
+    "geometric_constraints_w_2d": 1e-1,
+    "geometric_constraints_w_3d": 1e2,
+    "geometric_constraints_w_depth": 2.0,
+
+    "weight_latent_zero_norm": 0,
+
+    "loss_type_2d_render": "huber",
+
+    // Diffusion Prior Settings
+    "diffusion_prior_state": true,      ////////////// OPEN DIFFUSION PRIOR
+    "diffusion_prior_valid_start_iter": 0,
+
+    "diffusion_condition_type": "text",  // text or image
+
+    "loss_regularizer_method": "single",
+
+    "diffuse_mode_selection": "diffuse", //'diffuse', 'optimization'
+
+    // use shap-e to fully init a relatively good shape
+    // zero: zero latents
+    // random: a random gaussian with a sigma schedule
+    "init_latent_method": "random", 
+
+    // regularizer to constrain the latent to near the init one
+    // only effective if init_latent_method == 'shap-e'
+    "init_latent_normalization_weight": 10,
+    
+    // Prior Weights: Only useful for grad_method=="start"
+    "prior_weight": 2e4,
+
+    // Optimization Settings
+    "iter_num": 100,  
+    "opt_num_per_diffuse": 2,
+    "grad_method": "noise_plus_denoise", // 'step', 'start', 'euler', 'noise_plus_denoise'
+    
+    "lr": 0.5,  
+    "lr_scheduler_type": "none", // exp
+
+    "manually_update_latent_with_scale": false,
+    "shape_lr_balance": 2e2, 
+
+    // Visualization 
+    "visualize_frames": true,
+    "visualize_reconstruction_gif": true,      // a 360 deg gif
+    "visualize_rendered_image": true,          // render a RGB image into a view; time costly
+    
+    "view_file": "./view_table.json",
+
+    "vis_jump": 24 // for generating gifs
+}
+
+
